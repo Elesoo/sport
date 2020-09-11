@@ -1,0 +1,132 @@
+{% extends 'admin.html.twig' %}
+
+{% block content %}
+	<div class="container-fluid">
+    <div class="row" id="list_name">
+      <nav style="width: 66.666%;">
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+          <a class="nav-item nav-link active" style="width: 50%;" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Заявки</a>
+          <a class="nav-item nav-link" id="nav-profile-tab" style="width: 50%;" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Архив</a>
+        </div>
+      </nav>
+      <input class="mb-4" id="search_filter" style="width: 33.33%" type="" name="" placeholder="Поиск по имени пользователя">
+      <div class="tab-content" style="width: 100%;" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Ник пользователя</th>
+                <th scope="col">Номер телефона</th>
+                <th scope="col">Сумма</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>quizer</td>
+                <td>+79289998877</td>
+                <td>15000</td>
+                <td><a class="btn btn-primary" href="#" role="button">Принять</a><a class="btn btn-primary" href="#" role="button">Отклонить</a></td>
+              </tr>
+              <tr>
+                <th scope="row">1</th>
+                <td>quizer</td>
+                <td>+79289998877</td>
+                <td>15000</td>
+                <td><a class="btn btn-primary" href="#" role="button">Принять</a><a class="btn btn-primary" href="#" role="button">Отклонить</a></td>
+              </tr>
+              <tr>
+                <th scope="row">1</th>
+                <td>quizer</td>
+                <td>+79289998877</td>
+                <td>15000</td>
+                <td><a class="btn btn-primary" href="#" role="button">Принять</a><a class="btn btn-primary" href="#" role="button">Отклонить</a></td>
+              </tr>
+              <tr>
+                <th scope="row">1</th>
+                <td>quizer</td>
+                <td>+79289998877</td>
+                <td>15000</td>
+                <td><a class="btn btn-primary" href="#" role="button">Принять</a><a class="btn btn-primary" href="#" role="button">Отклонить</a></td>
+              </tr>
+              <tr>
+                <th scope="row">1</th>
+                <td>quizer</td>
+                <td>+79289998877</td>
+                <td>15000</td>
+                <td><a class="btn btn-primary" href="#" role="button">Принять</a><a class="btn btn-primary" href="#" role="button">Отклонить</a></td>
+              </tr>
+              <tr>
+                <th scope="row">1</th>
+                <td>quizer</td>
+                <td>+79289998877</td>
+                <td>15000</td>
+                <td><a class="btn btn-primary" href="#" role="button">Принять</a><a class="btn btn-primary" href="#" role="button">Отклонить</a></td>
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Ник пользователя</th>
+                <th scope="col">Номер телефона</th>
+                <th scope="col">Сумма</th>
+                <th scope="col">Статусы</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>quizer</td>
+                <td>+79289998877</td>
+                <td>15000</td>
+                <td>Принято</td>
+              </tr>
+              <tr>
+                <th scope="row">1</th>
+                <td>quizer</td>
+                <td>+79289998877</td>
+                <td>15000</td>
+                <td>Отклонено</td>
+              </tr>
+              <tr>
+                <th scope="row">1</th>
+                <td>quizer</td>
+                <td>+79289998877</td>
+                <td>15000</td>
+                <td>Принято</td>
+              </tr>
+              <tr>
+                <th scope="row">1</th>
+                <td>quizer</td>
+                <td>+79289998877</td>
+                <td>15000</td>
+                <td>Отклонено</td>
+              </tr>
+              <tr>
+                <th scope="row">1</th>
+                <td>quizer</td>
+                <td>+79289998877</td>
+                <td>15000</td>
+                <td>Принято</td>
+              </tr>
+              <tr>
+                <th scope="row">1</th>
+                <td>quizer</td>
+                <td>+79289998877</td>
+                <td>15000</td>
+                <td>Отклонено</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

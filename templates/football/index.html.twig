@@ -1,0 +1,519 @@
+{% extends 'base.html.twig' %}
+{% block includes %}
+    <link rel="stylesheet" href="../css/football.css">
+
+    <script>
+    	$(document).ready(function(){
+
+    		$('#list-tab .list__item').on('click', function (e) {
+			 	// e.preventDefault();
+				$(this).tab('show');
+			});
+
+			$('#list-tab .list__item').each(function(e){
+				var id = $(this).children().attr('id');
+				console.log(id);
+				$.ajax({
+					url: `football/getLeagues/${id}`,
+					cache: false,
+					dataType: "text",
+					beforeSend: function(){
+			        	$('#tournir_'+id).css('display', 'block');
+			        },
+					success: function(data){
+						$('#tournir_'+id).css('display', 'none');
+						data = JSON.parse(data);
+						console.log(data);
+						for(var key in items = data.data){
+
+							var t = new Date(items[key].date * 1000);
+							var months = ['Янв','Фев','Март','Апр','Май','Июнь','Июль','Авг','Сен','Окт','Нояб','Дек'];
+							var date = t.getDate();
+							var month = months[t.getMonth()];
+
+							var link = "";
+							if (items[key].type == 'Cup'){
+								link = `window.location='/football/cup?id=${items[key].id}'`;
+							} else {
+								link = `window.location='/football/championship?id=${items[key].id}'`;
+							}
+
+							let item = `<div class="tournir__card" onclick="${link}">
+												<div class="toutrnir__card_subtitle text-truncate">
+													<img src="data:image/png;base64,${items[key].logo}" alt="" class="img-fluid">${items[key].title}
+												</div>
+												<div class="tournir__card_blocktext">
+													<p class="blocktext__date">${date} ${month}</p>
+													<!-- <p class="blocktext__time">12:45</p> -->
+												</div>
+											</div>`;
+							$('#list-'+id).append(item);
+						}
+					}
+				});
+			});
+
+			$('div[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+				var w = window.screen.availWidth;
+				var go  = $(this).attr('href');
+			  	var top = $(go).offset().top;
+				if ( w <= 768 && $(go).hasClass('show')){
+					// event.preventDefault();
+					$('html').animate({scrollTop: top}, 1000);
+				}
+			});
+
+			$.ajax({
+		        url: "football/getLeagues/world",
+		        cache: false,
+		        dataType: "text",
+		        beforeSend: function(){
+		        	$('#worldship_list_loader').css('display', 'block');
+		        },
+		        success: function(data) {
+		          data = JSON.parse(data);
+					console.log(data);
+					$('#worldship_list_loader').css('display', 'none');
+
+					for(var key in items = data.data){
+
+						var t = new Date(items[key].date * 1000);
+						var months = ['Янв','Фев','Март','Апр','Май','Июнь','Июль','Авг','Сен','Окт','Нояб','Дек'];
+						var date = t.getDate();
+						var month = months[t.getMonth()];
+
+						var link = "";
+						if (items[key].type = 'Cup'){
+							link = `window.location='/football/cup?id=${items[key].id}'`;
+						} else {
+							link = `window.location='/football/championship?id=${items[key].id}'`;
+						}
+
+						let item = `<div class="col-md-6 pr-xl-0">
+										<div class="tournir__card" onclick="${link}">
+											<div class="toutrnir__card_subtitle text-truncate">
+												<img src="data:image/png;base64,${items[key].logo}" alt="" class="img-fluid">${items[key].title}
+											</div>
+											<div class="tournir__card_blocktext">
+												<p class="blocktext__date">${date} ${month}</p>
+												<!-- <p class="blocktext__time">12:45</p> -->
+											</div>
+										</div>
+									</div>`;
+						$('#worldship_list').append(item);
+					}
+		        }
+		    })
+		 });
+    </script>
+{% endblock %}
+{% block content %}
+	<div class="bg">
+		<div class="container-fluid">
+			<div class="container">
+				<nav aria-label="breadcrumb">
+				  <ol class="breadcrumb" style="background-color: transparent;">
+				    <li class="breadcrumb-item"><a class="title-foot" href="/">Главная</a></li>
+				    <li class="breadcrumb-item active" aria-current="page">Футбол</li>
+				  </ol>
+				</nav>
+				<p class="icons__title title-foot pb-4">Футбол</p>
+				<div class="row">
+					<div class="col-xl-8">
+						<div class="row">
+							<div class="col-xl-6 pr-xl-0 pb-4">
+								<div class="country">
+									<div class="row list-group" id="list-tab" role="tablist">
+										<div class="col-6 active list__item p-3" id="list-rus-list" data-toggle="tab" href="#list-Russia" role="tab" aria-controls="rus">
+											<div class="onhover" id="Russia">
+												<img src="/img/match/football/rus.png" alt="">
+												Россия
+											</div>
+										</div>
+										<div class="col-6 list__item p-3" id="list-italy-list" data-toggle="tab" href="#list-Italy" role="tab" aria-controls="italy">
+											<div class="onhover" id="Italy">
+												<img src="/img/match/football/it.png" alt="">
+												Италия
+											</div>
+										</div>
+										<div class="col-6 list__item p-3" id="list-eng-list" data-toggle="tab" href="#list-England" role="tab" aria-controls="eng">
+											<div class="onhover" id="England">
+												<img src="/img/match/football/eng.png" alt="">
+												Англия
+											</div>
+										</div>
+										<div class="col-6 list__item p-3" id="list-fr-list" data-toggle="tab" href="#list-France" role="tab" aria-controls="fr"> 
+											<div class="onhover" id="France">
+												<img src="/img/match/football/fr.png" alt="">
+												Франция
+											</div>
+										</div>
+										<div class="col-6 list__item p-3" id="list-sp-list" data-toggle="tab" href="#list-Spain" role="tab" aria-controls="sp">
+											<div class="onhover" id="Spain">
+												<img src="/img/match/football/sp.png" alt="">
+												Испания
+											</div>
+										</div>
+										<div class="col-6 list__item p-3" id="list-gr-list" data-toggle="tab" href="#list-Germany" role="tab" aria-controls="gr">
+											<div class="onhover" id="Germany">
+												<img src="/img/match/football/ger.png" alt="">
+												Германия
+											</div>
+										</div>
+										<div class="col-12 list__item p-3" id="list-all-list" data-toggle="tab" href="#list-all" role="tab" aria-controls="all">
+											<div class="onhover" id="all">
+												<img src="/img/match/football/all.png" alt="">
+												Все страны
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-xl-6 pr-xl-0 tab-content" id="nav-tabContent">
+								<div class="tab-pane fade show active" id="list-Russia" role="tabpanel" aria-labelledby="list-rus-list">
+									<p class="tournir__title">Турниры России</p>
+									<div class="load-wrapp" id="tournir_Russia">
+								      <div class="load-3">
+								        <div class="line green-background"></div>
+								        <div class="line green-background"></div>
+								        <div class="line green-background"></div>
+								      </div>
+								    </div>
+								</div>
+
+								<div class="tab-pane fade" id="list-Italy" role="tabpanel" aria-labelledby="list-italy-list">
+									<p class="tournir__title">Турниры Италии</p>
+									<div class="load-wrapp" id="tournir_Italy">
+								      <div class="load-3">
+								        <div class="line green-background"></div>
+								        <div class="line green-background"></div>
+								        <div class="line green-background"></div>
+								      </div>
+								    </div>
+								</div>
+
+								<div class="tab-pane fade" id="list-England" role="tabpanel" aria-labelledby="list-eng-list">
+									<p class="tournir__title">Турниры Англия</p>
+									<div class="load-wrapp" id="tournir_England">
+								      <div class="load-3">
+								        <div class="line green-background"></div>
+								        <div class="line green-background"></div>
+								        <div class="line green-background"></div>
+								      </div>
+								    </div>
+								</div>
+
+								<div class="tab-pane fade" id="list-France" role="tabpanel" aria-labelledby="list-fr-list">
+									<p class="tournir__title">Турниры Франции</p>
+									<div class="load-wrapp" id="tournir_France">
+								      <div class="load-3">
+								        <div class="line green-background"></div>
+								        <div class="line green-background"></div>
+								        <div class="line green-background"></div>
+								      </div>
+								    </div>
+								</div>
+
+								<div class="tab-pane fade" id="list-Spain" role="tabpanel" aria-labelledby="list-sp-list">
+									<p class="tournir__title">Турниры Испании</p>
+									<div class="load-wrapp" id="tournir_Spain">
+								      <div class="load-3">
+								        <div class="line green-background"></div>
+								        <div class="line green-background"></div>
+								        <div class="line green-background"></div>
+								      </div>
+								    </div>
+								</div>
+
+								<div class="tab-pane fade" id="list-Germany" role="tabpanel" aria-labelledby="list-gr-list">
+									<p class="tournir__title">Турниры Германии</p>
+									<div class="load-wrapp" id="tournir_Germany">
+								      <div class="load-3">
+								        <div class="line green-background"></div>
+								        <div class="line green-background"></div>
+								        <div class="line green-background"></div>
+								      </div>
+								    </div>
+								</div>
+
+								<div class="tab-pane fade" id="list-all" role="tabpanel" aria-labelledby="list-all-list">
+									<p class="tournir__title">Турниры всех стран</p>
+									<div class="load-wrapp" id="tournir_all">
+								      <div class="load-3">
+								        <div class="line green-background"></div>
+								        <div class="line green-background"></div>
+								        <div class="line green-background"></div>
+								      </div>
+								    </div>
+								</div>
+							</div>
+						</div>
+						<p class="icons__title pb-4">Международные турниры</p>
+						<div class="row mb-4" id="worldship_list">
+							<div class="load-wrapp" id="worldship_list_loader">
+						      <div class="load-3">
+						        <div class="line green-background"></div>
+						        <div class="line green-background"></div>
+						        <div class="line green-background"></div>
+						      </div>
+						    </div>
+						</div>
+						<div class="row mb-4">
+							<div class="col-md-4 pb-3 pr-xl-0">
+								<button class="tour__btn green-border">Следите за другими видами спорта</button>
+							</div>
+							<div class="col-md-4 pb-3 pr-xl-0">
+								<button class="tour__btn blue onhover" onclick="window.location='/hockey'">Хоккей</button>
+							</div>
+							<div class="col-md-4 pb-3 pr-xl-0">
+								<button class="tour__btn orange onhover" onclick="window.location='/basketball'">Баскетбол</button>
+							</div>
+						</div>
+					</div>
+					<div class="col-xl-4">
+						<div class="row">
+							<div class="col-xl-12 mb-4">
+								<div class="table_block">
+									<p class="table__title">ТОП  прогнозисты</p>
+									<div class="column">
+										<table>
+											<tbody>
+												<tr class="br-bottom">
+													<td class="flex">
+														<p class="text-left">
+															Имя прогнозиста
+														</p>
+													</td>
+													<td class="br-right">
+														<span class="table__point">+5</span>
+													</td>
+													<td class="br-right">
+														<span class="table__point">+3</span>
+													</td>
+													<td class="br-right">
+														<span class="table__point">+1</span>
+													</td>
+													<td>
+														<p class="flex__text">
+															Итого
+														</p>
+													</td>
+												</tr>
+												<tr>
+													<td class="flex">
+														<img class="table_img" src="/img/main/table_noimg.png">
+														<p class="before__text">
+															Сергей0922
+														</p>
+													</td>
+													<td class="br-right">
+														34
+													</td>
+													<td class="br-right">
+														120
+													</td>
+													<td class="br-right">
+														230
+													</td>
+													<td>
+														340
+													</td>
+												</tr>
+												<tr>
+													<td class="flex">
+														<img class="table_img" src="/img/main/table_noimg.png">
+														<p class="before__text">
+															Сергей0922
+														</p>
+													</td>
+													<td class="br-right">
+														34
+													</td>
+													<td class="br-right">
+														120
+													</td>
+													<td class="br-right">
+														230
+													</td>
+													<td>
+														340
+													</td>
+												</tr>
+												<tr>
+													<td class="flex">
+														<img class="table_img" src="/img/main/table_noimg.png">
+														<p class="before__text">
+															Сергей0922
+														</p>
+													</td>
+													<td class="br-right">
+														34
+													</td>
+													<td class="br-right">
+														120
+													</td>
+													<td class="br-right">
+														230
+													</td>
+													<td>
+														340
+													</td>
+												</tr>
+												<tr>
+													<td class="flex">
+														<img class="table_img" src="/img/main/table_noimg.png">
+														<p class="before__text">
+															Сергей0922
+														</p>
+													</td>
+													<td class="br-right">
+														34
+													</td>
+													<td class="br-right">
+														120
+													</td>
+													<td class="br-right">
+														230
+													</td>
+													<td>
+														340
+													</td>
+												</tr>
+												<tr>
+													<td class="flex">
+														<img class="table_img" src="/img/main/table_noimg.png">
+														<p class="before__text">
+															Сергей0922
+														</p>
+													</td>
+													<td class="br-right">
+														34
+													</td>
+													<td class="br-right">
+														120
+													</td>
+													<td class="br-right">
+														230
+													</td>
+													<td>
+														340
+													</td>
+												</tr>
+												<tr>
+													<td class="flex">
+														<img class="table_img" src="/img/main/table_noimg.png">
+														<p class="before__text">
+															Сергей0922
+														</p>
+													</td>
+													<td class="br-right">
+														34
+													</td>
+													<td class="br-right">
+														120
+													</td>
+													<td class="br-right">
+														230
+													</td>
+													<td>
+														340
+													</td>
+												</tr>
+												<tr>
+													<td class="flex">
+														<img class="table_img" src="/img/main/table_noimg.png">
+														<p class="before__text">
+															Сергей0922
+														</p>
+													</td>
+													<td class="br-right">
+														34
+													</td>
+													<td class="br-right">
+														120
+													</td>
+													<td class="br-right">
+														230
+													</td>
+													<td>
+														340
+													</td>
+												</tr>
+												<tr>
+													<td class="flex">
+														<img class="table_img" src="/img/main/table_noimg.png">
+														<p class="before__text">
+															Сергей0922
+														</p>
+													</td>
+													<td class="br-right">
+														34
+													</td>
+													<td class="br-right">
+														120
+													</td>
+													<td class="br-right">
+														230
+													</td>
+													<td>
+														340
+													</td>
+												</tr>
+												<tr>
+													<td class="flex">
+														<img class="table_img" src="/img/main/table_noimg.png">
+														<p class="before__text">
+															Сергей0922
+														</p>
+													</td>
+													<td class="br-right">
+														34
+													</td>
+													<td class="br-right">
+														120
+													</td>
+													<td class="br-right">
+														230
+													</td>
+													<td>
+														340
+													</td>
+												</tr>
+												<tr>
+													<td class="flex">
+														<img class="table_img" src="/img/main/table_noimg.png">
+														<p class="before__text">
+															Сергей0922
+														</p>
+													</td>
+													<td class="br-right">
+														34
+													</td>
+													<td class="br-right">
+														120
+													</td>
+													<td class="br-right">
+														230
+													</td>
+													<td>
+														340
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>	
+									<a class="table_link green-border" href="#">Все прогнозисты</a>
+								</div>
+							</div>
+							<div class="col-xl-12 pb-4">
+								<div class="advertising_block">
+									<p>Реклама</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

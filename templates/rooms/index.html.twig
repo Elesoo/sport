@@ -1,0 +1,282 @@
+{% extends 'base.html.twig' %}
+
+{% block includes %}
+
+	<link rel="stylesheet" href="/css/rooms.css">
+	<link rel="stylesheet" href="../css/tourchamp.css">
+	<link rel="stylesheet" href="/css/leaderboard.css">
+	<link rel="stylesheet" href="../css/football.css">
+
+
+	<script src="/js/rooms.js"></script>
+
+{% endblock %}
+
+{% block content %}
+
+	<div class="container-fluid tournir__cont rooms " style="background: #F4F4F4;">
+		<div class="container">
+			<nav aria-label="breadcrumb">
+			  <ol class="breadcrumb" style="background-color: transparent;">
+			    <li class="breadcrumb-item"><a class="title-foot" href="/profile">Личный кабинет</a></li>
+			    <li class="breadcrumb-item active" aria-current="page">Комнаты</li>
+			  </ol>
+			</nav>
+			<p class="icons__title pb-4">Комнаты</p>
+			<div class="row">
+				<div class="col-xl-8">
+					<div class="row pb-4">
+						<div class="col-sm-4 p-sm-0">
+							<div class="tournir__menu_item active" data-tab="room">
+								<p class="item__text">Мои комнаты</p>
+							</div>
+						</div>
+						<div class="col-sm-4 p-sm-0">
+							<div class="tournir__menu_item" data-tab="claims">
+								<p class="item__text">Мои приглашения</p>
+							</div>
+						</div>
+						<div class="col-sm-4 p-sm-0">
+							<div class="tournir__menu_item" data-tab="createRooms">
+								<p class="item__text">Создать комнату</p>
+							</div>
+						</div>
+					</div>
+					<div class="row pb-4">
+						<div class="rooms__list active tab_items" id="room">
+
+							<div class="accordion" id="accordionExample">
+							</div>
+						</div>
+						<div class="invites tab_items" id="claims">
+						</div>
+						<div class="make__room tab_items" id="createRooms">
+							<div class="select__tour">
+
+								<div class="tour__sports">
+									<p class="title__room mb-3">Выбрать турнир</p>
+									<div class="btn__tour_group mb-3 list-group" id="pills-tab-1" role="tablist">
+										<button class="select__tour_btn select__foot" id="pills-football-tab-1" data-toggle="pill" href="#pills-football-1" role="tab" aria-controls="pills-football-1" aria-selected="false" onclick="loadFootball($(this))" data-load="false" data-idBlock="1">Футбол</button>
+
+										<button class="select__tour_btn select__hoc" id="pills-hockey-tab-1" data-toggle="pill" href="#pills-hockey-1" role="tab" aria-controls="pills-hockey-1" aria-selected="false" onclick="loadHockey($(this))" data-load="false" data-idBlock="1">Хоккей</button>
+
+										<button class="select__tour_btn select__bas" id="pills-basketball-tab-1" data-toggle="pill" href="#pills-basketball-1" role="tab" aria-controls="pills-basketball-1" aria-selected="false" onclick="loadBasketball($(this))" data-load="false" data-idBlock="1">Баскетбол</button>
+									</div>
+
+									<div class="tab-content chooseRoom">
+										<div class="country__select tab-pane fade" id="pills-football-1" role="tabpanel" aria-labelledby="pills-football-tab-1">
+											<div class="select__country row mr-0 ml-0 list-group" id="pills-tab-contry-1" role="tablist">
+												<div class="col-6 col-sm-4 country__item active" id="pills-Russia-tab-1" data-link="Russia" data-toggle="pill" href="#pills-Russia-1" role="tab" aria-controls="pills-Russia-1" aria-selected="false">
+													<img src="/img/match/football/rus.png" alt="">
+													<p class="country__item_text">Россия</p>
+												</div>
+												<div class="col-6 col-sm-4 country__item" id="pills-Italy-tab-1" data-link="Italy" data-toggle="pill" href="#pills-Italy-1" role="tab" aria-controls="pills-Italy-1" aria-selected="false">
+													<img src="/img/match/football/it.png" alt="">
+													<p class="country__item_text">Италия</p>
+												</div>
+												<div class="col-6 col-sm-4 country__item border-right-0" id="pills-England-tab-1" data-link="England" data-toggle="pill" href="#pills-England-1" role="tab" aria-controls="pills-England-1" aria-selected="false">
+													<img src="/img/match/football/eng.png" alt="">
+													<p class="country__item_text">Англия</p>
+												</div>
+												<div class="col-6 col-sm-4 country__item border_bottom_none" id="pills-France-tab-1"  data-link="France"data-toggle="pill" href="#pills-France-1" role="tab" aria-controls="pills-France-1" aria-selected="false">
+													<img src="/img/match/football/fr.png" alt="">
+													<p class="country__item_text">Франция</p>
+												</div>
+												<div class="col-6 col-sm-4 country__item border_bottom_none" id="pills-Spain-tab-1" data-link="Spain" data-toggle="pill" href="#pills-Spain-1" role="tab" aria-controls="pills-Spain-1" aria-selected="false">
+													<img src="/img/match/football/sp.png" alt="">
+													<p class="country__item_text">Испания</p>
+												</div>
+												<div class="col-6 col-sm-4 country__item border-right-0 border_bottom_none" id="pills-Germany-tab-1" data-link="Germany" data-toggle="pill" href="#pills-Germany-1" role="tab" aria-controls="pills-Germany-1" aria-selected="false">
+													<img src="/img/match/football/ger.png" alt="">
+													<p class="country__item_text">Германия</p>
+												</div>
+											</div>
+
+											<div class="row tab-content">
+												<div class="col-md-6 tab-pane fade show active" id="pills-Russia-1" role="tabpanel" aria-labelledby="pills-Russia-tab-1">
+													<p class="title__room mb-3">Турниры России</p>
+													<div class="load-wrapp" id="tournir_Russia-1">
+														<div class="load-3">
+															<div class="line green-background"></div>
+															<div class="line green-background"></div>
+															<div class="line green-background"></div>
+														</div>
+													</div>
+												</div>
+
+												<div class="col-md-6 tab-pane fade" id="pills-Italy-1" role="tabpanel" aria-labelledby="pills-Italy-tab-1">
+													<p class="title__room mb-3">Турниры Италии</p>
+													<div class="load-wrapp" id="tournir_Italy-1">
+														<div class="load-3">
+															<div class="line green-background"></div>
+															<div class="line green-background"></div>
+															<div class="line green-background"></div>
+														</div>
+													</div>
+												</div>
+
+												<div class="col-md-6 tab-pane fade" id="pills-England-1" role="tabpanel" aria-labelledby="pills-England-tab-1">
+													<p class="title__room mb-3">Турниры Англия</p>
+													<div class="load-wrapp" id="tournir_England-1">
+														<div class="load-3">
+															<div class="line green-background"></div>
+															<div class="line green-background"></div>
+															<div class="line green-background"></div>
+														</div>
+													</div>
+												</div>
+
+												<div class="col-md-6 tab-pane fade" id="pills-France-1" role="tabpanel" aria-labelledby="pills-France-tab-1">
+													<p class="title__room mb-3">Турниры Франция</p>
+													<div class="load-wrapp" id="tournir_France-1">
+														<div class="load-3">
+															<div class="line green-background"></div>
+															<div class="line green-background"></div>
+															<div class="line green-background"></div>
+														</div>
+													</div>
+												</div>
+
+												<div class="col-md-6 tab-pane fade" id="pills-Spain-1" role="tabpanel" aria-labelledby="pills-Spain-tab-1">
+													<p class="title__room mb-3">Турниры Испания</p>
+													<div class="load-wrapp" id="tournir_Spain-1">
+														<div class="load-3">
+															<div class="line green-background"></div>
+															<div class="line green-background"></div>
+															<div class="line green-background"></div>
+														</div>
+													</div>
+												</div>
+
+												<div class="col-md-6 tab-pane fade" id="pills-Germany-1" role="tabpanel" aria-labelledby="pills-Germany-tab-1">
+													<p class="title__room mb-3">Турниры Германия</p>
+													<div class="load-wrapp" id="tournir_Germany-1">
+														<div class="load-3">
+															<div class="line green-background"></div>
+															<div class="line green-background"></div>
+															<div class="line green-background"></div>
+														</div>
+													</div>
+												</div>
+
+												<div class="col-md-6" id="pills-All-1">
+													<p class="title__room mb-3">Международные турниры</p>
+													<div class="load-wrapp" id="worldship_list_loader-1">
+														<div class="load-3">
+															<div class="line green-background"></div>
+															<div class="line green-background"></div>
+															<div class="line green-background"></div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="country__select tab-pane fade" id="pills-hockey-1" role="tabpanel" aria-labelledby="pills-hockey-tab-1">
+											<div class="tournir__card onhover">
+												<div class="toutrnir__card_subtitle text-truncate">
+													<p class="tournir__card_text">Лига чемпионов</p>
+													<img src="" alt="" class="img-fluid">
+												</div>
+												<div class="tournir__card_blocktext">
+													<p class="blocktext__date">26 октября</p>
+													<p class="blocktext__time">12:45</p>
+												</div>
+											</div>
+										</div>
+
+										<div class="country__select tab-pane fade" id="pills-basketball-1" role="tabpanel" aria-labelledby="pills-basketball-tab-1">
+											<div class="load-wrapp" id="worldship_list_basketball-1">
+												<div class="load-3">
+													<div class="line orange-background"></div>
+													<div class="line orange-background"></div>
+													<div class="line orange-background"></div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<button class="add__tour" id="add_tournir" onclick="addNewTour()">Добавить турнир в комнату</button>
+
+
+							</div>
+							<div class="row">
+								<div class="col-md-6 mb-3">
+									<div class="make__block">
+										<div class="make__room_title">
+											<p class="title__room">Участники комнаты</p>
+											<input type="text" placeholder="Имя участника" class="member__input" id="nicknameFind">
+											<div class="make__room_members" id="wait_invite">
+											</div>
+										</div>
+										<button class="send__invite" id="send__invite">
+											Отправить приглашение
+										</button>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="make__block">
+										<p class="title__room">Создание комнаты</p>
+										<input type="text" placeholder="Название комнаты" id='nameRoom' class="member__input">
+										<button class="send__invite" id="createRoom_load">
+											Создать комнату
+										</button>
+										<p class="make__room_text">
+											Прежде чем создать комнату, необходимо отправить приглашения участникам комнаты.
+										</p>
+										<p class="make__room_text">
+											Без участников группа не может существовать.
+										</p>
+										<p class="make__room_text">
+											В комнате только создатель может управлять количеством участников.
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xl-4">
+					<div class="advertising_block">
+						<p>Реклама</p>
+					</div>
+					<div class="advertising_block">
+						<p>Реклама</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Modal -->
+	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title modal__head_title" id="exampleModalLabel">Редактирование комнаты</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body" id="modal_edit">
+					<p class="modal__body_subtitle nameRoom_modal">Название комнаты</p>
+					<input type="text" placeholder="Название комнаты" class="member__input w-100" id="member__input_room">
+					<p class="modal__body_subtitle">Участники комнаты</p>
+					<div class="make__room_members members_current">
+					</div>
+					<p class="modal__body_subtitle">Добавить участника</p>
+					<input type="text" placeholder="Имя участника" class="member__input w-100" id="member__input_add">
+					<div class="make__room_members members_add">
+					</div>
+				</div>
+				<div class="modal__footer">
+					<button type="button" class="changes send__changes add_member" data-idRoom="">Отправить приглашение</button>
+					<button type="button" class="changes save__changes">Сохранить изменения</button>
+					<a href="" class="btn_delete__room">Удалить комнату</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}

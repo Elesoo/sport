@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+
+{% block includes %}
+	<link rel="stylesheet" href="../css/football_game.css">
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-database.js"></script>
+<!-- <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script> -->
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-analytics.js"></script>
+
+<script type="text/javascript" src="../js/game.js"></script>
+{% endblock %}
+
+{% block content %}
+	<div class="container-fluid" style="background: #F4F4F4;">
+		<div class="container">
+			<p class="football__game_title"></p>
+			<div class="row">
+				<div class="col-xl-8">
+					<div class="match__main_cont">
+						<div class="load-wrapp" id="game_info">
+					      <div class="load-3">
+					        <div class="line green-background"></div>
+					        <div class="line green-background"></div>
+					        <div class="line green-background"></div>
+					      </div>
+					    </div>
+						
+						<!-- <p class="match__cont_subtitle match__cont_tour">10-й тур</p> -->
+						<div class="match__cont_charact">
+							
+						</div>
+					</div>
+					{% if app.user %}
+						<div class="match__text" data-login='true'>
+						</div>
+					{% else %}
+						<div class="match__text" data-login='false'>
+							
+						</div>
+					{% endif %}
+					<div class="comments mb-5">
+						<div class="load-wrapp" id="game_comment">
+					      <div class="load-3">
+					        <div class="line green-background"></div>
+					        <div class="line green-background"></div>
+					        <div class="line green-background"></div>
+					      </div>
+					    </div>
+					</div>
+
+				</div>
+				<div class="col-xl-4">
+					<div class="advertising_block">
+						<p>Реклама</p>
+					</div>
+					<div class="advertising_block">
+						<p>Реклама</p>
+					</div>
+					<div class="advertising_block">
+						<p>Реклама</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	{# match_future #}
+
+	
+
+{% endblock %}
