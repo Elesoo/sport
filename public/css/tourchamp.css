@@ -1,0 +1,515 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+/*
+	page navigation:
+
+	-header
+	-tournir__cont
+	-country__info
+
+*/
+
+/*tournir__cont*/
+
+/*.tournir__cont_menu {
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	-webkit-flex-direction: row;
+	-moz-flex-direction: row;
+	-ms-flex-direction: row;
+	-o-flex-direction: row;
+	flex-direction: row;
+	/*margin-top: 10px;
+	margin-bottom: 50px;
+}*/
+
+.tournir__menu_item {
+	width: 100%;
+	height: 48px;
+	background-color: #fff;
+	position: relative;
+	cursor: pointer;
+}
+
+.tab_items{
+	display: none;
+}
+
+.tab_items.active{
+	display: block;
+}
+
+.tournir__menu_item.active {
+	font-weight: bold;
+	background: #119C51;
+	color: #FFFFFF;
+	transition: .4s;
+}
+
+.item__text {
+	font-size: 18px;
+	line-height: 22px;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	position: absolute;
+}
+
+
+.tournir__table .table__menu {
+	border-bottom: .3px solid rgba(0, 0, 0, 0.5);
+}
+
+.table__menu td {
+	font-size: 18px;
+	line-height: 21px;
+	color: #119C51;
+	height: auto;
+	width: 10%;
+	text-align: center;
+}
+
+.tournir__table .table__menu td:nth-child(2) {
+	font-size: 14px;
+	line-height: 17px;
+	color: #656565;
+	vertical-align: middle;
+	text-align: left;
+	padding-left: 40px;
+}
+
+
+.tournir__table {
+	background-color: #fff;
+	border-radius: 3px;
+	border-collapse: separate;
+	border-spacing: 10px;
+	width: 100%;
+}
+
+
+.tournir__table td:first-child {
+	width: 3%;
+}
+
+.tournir__table td:last-child {
+	font-weight: bold;
+}
+
+.tournir__table td {
+	width: 10%;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.tournir__table .team__name {
+	position: relative;
+	width: 25%;
+	text-align: left;
+	/*padding-left: 40px;*/
+}
+
+.team__name{
+	max-width: 172px;
+}
+
+.lead_img {
+	/*padding-left: 40px;*/
+	/*left: -30px;*/
+	width: 30px;
+	height: 27px;
+	/*position: absolute;*/
+	/*top: 50%;*/
+	/*transform: translateY(-50%);*/
+	/*vertical-align: middle;*/
+}
+
+.lead__num {
+	font-size: 16px;
+	color: #fff;
+	font-weight: bold;
+	background: #119C51;
+	border-radius: 1.5px;
+	text-align: center;
+}
+
+/*tour__block*/
+
+.tour__block {
+	margin-bottom: 80px;
+}
+
+.tour__block_subtitle {
+	margin-top: 58px;
+	margin-bottom: 30px;
+	font-weight: 500;
+	font-size: 18px;
+	line-height: 22px;
+	color: #119C51;
+	display: flex;
+	justify-content: space-between;
+}
+
+
+.tournir__block_item {
+	width: 100%;
+	height: 50px;
+	background-color: #fff;
+	border-radius: 5px;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	-ms-align-items: center;
+	align-items: center;
+	margin-bottom: 10px;
+	cursor: pointer;
+}
+
+.tournir__item_date {
+	padding: 10px;
+	border-right:  0.3px solid rgba(0, 0, 0, 0.5);
+}
+
+@media(max-width: 401px){
+	.tournir__item_date{
+		padding: 10px 5px 10px 10px;
+	}
+}
+
+.tournir__date_text {
+	font-size: 12px;
+	line-height: 15px;
+	text-align: center;
+	color: #656565;
+}
+
+.tournir__item_comand {
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	width: 100%;
+	-ms-align-items: center;
+	align-items: center;
+	justify-content: space-around;
+	/*margin: 0 auto;*/
+	padding-left: 3px;
+}
+
+.tournir__item_team{
+	display: flex;
+	justify-content: center;
+	/*width: 100%;*/
+}
+
+.comand__name {
+	font-size: 16px;
+	line-height: 25px;
+	width: 75px;
+	text-align: center;
+}
+
+.tournir__item_count {
+	width: 24px;
+	height: 26px;
+	line-height: 27px;
+} 
+
+/*country__info*/
+
+.country__info {
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	-webkit-flex-direction: column;
+	-moz-flex-direction: column;
+	-ms-flex-direction: column;
+	-o-flex-direction: column;
+	flex-direction: column;
+	-ms-align-items: center;
+	align-items: center;
+	height: 225px;
+	background: #fff;
+	border-radius: 5px;
+	padding-top: 30px;
+	padding-bottom: 20px;
+	margin-bottom: 10px;
+}
+
+
+.country__info_text {
+	font-size: 14px;
+	line-height: 17px;
+	text-align: center;	
+	margin-bottom: 15px;
+}
+
+.flag:before {
+	content: url('/img/tournir_champ/flag.png');
+	padding-right: 10px;
+	padding-top: 10px;
+}
+
+/* User Info*/
+
+.user__info{
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	-webkit-flex-direction: column;
+	-moz-flex-direction: column;
+	-ms-flex-direction: column;
+	-o-flex-direction: column;
+	flex-direction: column;
+	padding: 30px;
+	background-color: #fff;
+	margin-bottom: 10px;
+}
+
+.user__info_about{
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	-ms-justify-content: center;
+	justify-content: center;
+	-ms-align-items: center;
+	align-items: center;
+	padding-bottom: 10px;
+	margin-bottom: 10px;
+}
+
+.user__info_about img{
+	width: 30px;
+	height: 30px;
+}
+
+/*prediction__section*/
+
+.prediction__section {
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	-webkit-flex-direction: column;
+	-moz-flex-direction: column;
+	-ms-flex-direction: column;
+	-o-flex-direction: column;
+	flex-direction: column;
+	padding: 30px;
+	background-color: #fff;
+	margin-bottom: 10px;
+}
+
+.section__item {
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	-ms-align-items: center;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 10px;
+}
+
+.section__item_title {
+	font-weight: bold;
+	font-size: 16px;
+	line-height: 19px;
+	color: #202020;
+	margin-bottom: 20px;
+}
+
+.section__item_subtitle {
+	font-size: 10px;
+	line-height: 12px;
+	color: #656565;
+	padding-bottom: 10px;
+}
+
+.section__item_text:first-child {
+	font-size: 12px;
+	line-height: 14px;
+	color: #515151;
+}
+
+.section__item_text:last-child {
+	font-weight: 500;
+	font-size: 12px;
+	line-height: 14px;
+	color: #404040;
+}
+
+.section__btn {
+	width: 141px;
+	height: 32px;
+	background-color: transparent;
+	text-align: center;
+	color: #202020;
+	font-size: 12px;
+	line-height: 14px;
+	border: 1px solid #119C51;
+	border-radius: 40px;
+	margin: 8px auto 36px;
+}
+
+.winner__section {
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	-webkit-flex-direction: column;
+	-moz-flex-direction: column;
+	-ms-flex-direction: column;
+	-o-flex-direction: column;
+	flex-direction: column;
+	padding: 30px;
+	background-color: #fff;
+	margin-bottom: 10px;
+}
+
+.winner__section_title {
+	font-weight: bold;
+	font-size: 16px;
+	line-height: 19px;
+	color: #202020;
+	margin: 10px 0 18px;
+}
+
+.border__block {
+	border-bottom: .3px solid rgba(0, 0, 0, 0.5);
+}
+
+@media(max-width: 550px){
+	.dis-no{
+		display: none;
+	}
+}
+
+.input_prog{
+	width: 24px;
+	height: 26px;
+	border: 1px solid #C4C4C4;
+	margin-left: 7px;
+	border-radius: 1.5px;
+	text-align: center;
+}
+
+.block_prog{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 2.5px 10px;
+	width: 120px;
+	/*margin-left: 5px;*/
+	/*margin-right: 5px;*/
+}
+
+.ball__btn {
+	background-color: white;
+	/*border-radius: 50%;*/
+	padding: 2px;
+	border: none;
+	margin-left: 7px;
+}
+
+.ball__btn > img {
+	width: 30px;
+	height: 30px;
+}
+
+.tournir__item_point{
+	width: 70px;
+	height: 100%;
+	margin-right: 15px;
+	color: #119C51;
+	text-align: center;
+}
+
+.no_point{
+	width: 25px;
+	height: 3px;
+	margin: 0 auto;
+	background-color: #119C51;
+	/*margin-left: 15px;*/
+}
+
+
+/*media*/
+
+@media (max-width: 768px) {
+	.tournir__block_item {
+		height: auto;
+		-webkit-flex-direction: column;
+		-moz-flex-direction: column;
+		-ms-flex-direction: column;
+		-o-flex-direction: column;
+		flex-direction: column;
+		padding: 30px;
+	}
+
+	.tournir__item_date {
+		border: none;
+	}
+
+	.tournir__item_comand {
+		-webkit-flex-direction: column;
+		-moz-flex-direction: column;
+		-ms-flex-direction: column;
+		-o-flex-direction: column;
+		flex-direction: column;
+	}
+
+	.tournir__item_team {
+		padding-bottom: 15px;
+		border-bottom: 0.3px solid rgba(0, 0, 0, 0.5);
+	}
+
+	.mobile__help_block {
+		display: -webkit-flex;
+		display: -moz-flex;
+		display: -ms-flex;
+		display: -o-flex;
+		display: flex;
+		-webkit-flex-direction: row;
+		-moz-flex-direction: row;
+		-ms-flex-direction: row;
+		-o-flex-direction: row;
+		flex-direction: row;
+		-ms-align-items: center;
+		align-items: center;
+		justify-content: space-between;
+		margin-top: 15px;
+		width: 100%;
+	}	
+
+	.border__around {
+		border: none;
+	}
+}
+
+input[type='number'] {
+    -moz-appearance:textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}

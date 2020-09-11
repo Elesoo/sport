@@ -1,0 +1,305 @@
+{% extends 'base.html.twig' %}
+
+{% block includes %}
+	<link rel="stylesheet" href="../css/tourchamp.css">
+	<script src="../js/cup.js"></script>
+{% endblock %}
+
+{% block content %}
+	<div class="container-fluid tournir__cont" style="background: #F4F4F4;">
+		<div class="container">
+			<nav aria-label="breadcrumb">
+			  <ol class="breadcrumb" style="background-color: transparent;">
+			    <li class="breadcrumb-item"><a class="title-foot" href="/">Главная</a></li>
+			    <li class="breadcrumb-item"><a class="title-foot" href="/football">Футбол</a></li>
+			    <li class="breadcrumb-item active" aria-current="page">Кубок</li>
+			  </ol>
+			</nav>
+			<p class="icons__title pb-4"></p>
+			<div class="row">
+				<div class="col-xl-8 p-0 p-sm-3">
+					<div class="row">
+						<div class="col-12 pr-sm-0">
+							<div class="tournir__menu_item">
+								<p class="item__text">Турнир</p>
+							</div>
+						</div>
+					</div>
+					<div class="tour__block" id="result">
+						<div class="load-wrapp" id="tournir_now">
+				      <div class="load-3">
+				        <div class="line green-background"></div>
+				        <div class="line green-background"></div>
+				        <div class="line green-background"></div>
+				      </div>
+				    </div>
+						<!-- <div class="tour__block_subtitle">
+							<p>Финал</p>
+							<div>
+								<span>Прогноз</span>
+								<span class="ml-5 pr-1">Получено очков</span>
+							</div>
+						</div>
+						<div class="tournir__block_item onhover">
+								<div class="tournir__item_date">
+									<p class="tournir__date_text">23.04.2020</p>
+								</div>
+								<div class="tournir__item_comand">
+									<div class="tournir__item_team">
+										<p class="comand__name text-truncate">Челси</p>
+										<img src="/img/tournir_champ/symb.png" alt="" class="ml-2">
+										<div class="tournir__item_count lead__num mr-2 ml-2">-</div>
+										<div class="tournir__item_count lead__num">-</div>
+										<img src="/img/tournir_champ/symb.png" alt="" class="ml-2 mr-2">
+										<p class="comand__name text-truncate">Ман Сити</p>
+									</div>
+									<div class="block_prog border__around">
+										<input class="input_prog" type="text" name=""/>
+										<input class="input_prog" type="text" name=""/>
+										<button class="ball__btn">
+											<img src="/img/main/f.png" alt="">
+										</button>
+									</div>
+									<div class="tournir__item_point">
+										<div class="no_point"></div>
+									</div>
+								</div>
+							</div>
+						<p class="tour__block_subtitle">1/2 финала</p>
+						<div class="tournir__block_item onhover">
+								<div class="tournir__item_date">
+									<p class="tournir__date_text">23.04.2020</p>
+								</div>
+								<div class="tournir__item_comand">
+									<div class="tournir__item_team">
+										<p class="comand__name text-truncate">Челси</p>
+										<img src="/img/tournir_champ/symb.png" alt="" class="ml-2">
+										<div class="tournir__item_count lead__num mr-2 ml-2">-</div>
+										<div class="tournir__item_count lead__num">-</div>
+										<img src="/img/tournir_champ/symb.png" alt="" class="ml-2 mr-2">
+										<p class="comand__name text-truncate">Ман Сити</p>
+									</div>
+									<div class="block_prog border__around">
+										<input class="input_prog" type="text" name=""/>
+										<input class="input_prog" type="text" name=""/>
+										<button class="ball__btn">
+											<img src="/img/main/f.png" alt="">
+										</button>
+									</div>
+									<div class="tournir__item_point">
+										<div class="no_point"></div>
+									</div>
+								</div>
+							</div>
+							<div class="tournir__block_item onhover">
+								<div class="tournir__item_date">
+									<p class="tournir__date_text">23.04.2020</p>
+								</div>
+								<div class="tournir__item_comand">
+									<div class="tournir__item_team">
+										<p class="comand__name text-truncate">Челси</p>
+										<img src="/img/tournir_champ/symb.png" alt="" class="ml-2">
+										<div class="tournir__item_count lead__num mr-2 ml-2">-</div>
+										<div class="tournir__item_count lead__num">-</div>
+										<img src="/img/tournir_champ/symb.png" alt="" class="ml-2 mr-2">
+										<p class="comand__name text-truncate">Ман Сити</p>
+									</div>
+									<div class="block_prog border__around">
+										<input class="input_prog" type="text" name=""/>
+										<input class="input_prog" type="text" name=""/>
+										<button class="ball__btn">
+											<img src="/img/main/f.png" alt="">
+										</button>
+									</div>
+									<div class="tournir__item_point">
+										<div class="no_point"></div>
+									</div>
+								</div>
+							</div>
+							<div class="tournir__block_item onhover">
+								<div class="tournir__item_date">
+									<p class="tournir__date_text">23.04.2020</p>
+								</div>
+								<div class="tournir__item_comand">
+									<div class="tournir__item_team">
+										<p class="comand__name text-truncate">Челси</p>
+										<img src="/img/tournir_champ/symb.png" alt="" class="ml-2">
+										<div class="tournir__item_count lead__num mr-2 ml-2">-</div>
+										<div class="tournir__item_count lead__num">-</div>
+										<img src="/img/tournir_champ/symb.png" alt="" class="ml-2 mr-2">
+										<p class="comand__name text-truncate">Ман Сити</p>
+									</div>
+									<div class="block_prog border__around">
+										<input class="input_prog" type="text" name=""/>
+										<input class="input_prog" type="text" name=""/>
+										<button class="ball__btn">
+											<img src="/img/main/f.png" alt="">
+										</button>
+									</div>
+									<div class="tournir__item_point">
+										<div class="no_point"></div>
+									</div>
+								</div>
+							</div>
+						<p class="tour__block_subtitle">1/4 финала</p>
+						<div class="tournir__block_item onhover">
+							<div class="tournir__item_date">
+								<p class="tournir__date_text">23.04.2020</p>
+							</div>
+							<div class="tournir__item_comand">
+								<div class="tournir__item_team">
+									<p class="comand__name text-truncate">Челси</p>
+									<img src="/img/tournir_champ/symb.png" alt="" class="ml-2">
+									<div class="tournir__item_count lead__num mr-2 ml-2">-</div>
+									<div class="tournir__item_count lead__num">-</div>
+									<img src="/img/tournir_champ/symb.png" alt="" class="ml-2 mr-2">
+									<p class="comand__name text-truncate">Ман Сити</p>
+								</div>
+								<div class="block_prog border__around">
+									<input class="input_prog" type="text" value="5" name=""/ readonly>
+									<input class="input_prog" type="text" value="3" name=""/ readonly>
+								</div>
+								<div class="tournir__item_point"> +5
+								</div>
+							</div>
+						</div>
+						<div class="tournir__block_item onhover">
+							<div class="tournir__item_date">
+								<p class="tournir__date_text">23.04.2020</p>
+							</div>
+							<div class="tournir__item_comand">
+								<div class="tournir__item_team">
+									<p class="comand__name text-truncate">Челси</p>
+									<img src="/img/tournir_champ/symb.png" alt="" class="ml-2">
+									<div class="tournir__item_count lead__num mr-2 ml-2">-</div>
+									<div class="tournir__item_count lead__num">-</div>
+									<img src="/img/tournir_champ/symb.png" alt="" class="ml-2 mr-2">
+									<p class="comand__name text-truncate">Ман Сити</p>
+								</div>
+								<div class="block_prog border__around">
+									<input class="input_prog" type="text" value="5" name=""/ readonly>
+									<input class="input_prog" type="text" value="3" name=""/ readonly>
+								</div>
+								<div class="tournir__item_point"> +5
+								</div>
+							</div>
+						</div>
+						<div class="tournir__block_item onhover">
+							<div class="tournir__item_date">
+								<p class="tournir__date_text">23.04.2020</p>
+							</div>
+							<div class="tournir__item_comand">
+								<div class="tournir__item_team">
+									<p class="comand__name text-truncate">Челси</p>
+									<img src="/img/tournir_champ/symb.png" alt="" class="ml-2">
+									<div class="tournir__item_count lead__num mr-2 ml-2">-</div>
+									<div class="tournir__item_count lead__num">-</div>
+									<img src="/img/tournir_champ/symb.png" alt="" class="ml-2 mr-2">
+									<p class="comand__name text-truncate">Ман Сити</p>
+								</div>
+								<div class="block_prog border__around">
+									<input class="input_prog" type="text" value="5" name=""/ readonly>
+									<input class="input_prog" type="text" value="3" name=""/ readonly>
+								</div>
+								<div class="tournir__item_point"> +5
+								</div>
+							</div>
+						</div> -->
+					</div>
+				</div>
+				<div class="col-xl-4">
+					<div class="country__info">
+						<img src="/img/tournir_champ/hzchoet.png" alt="">
+						<p class="country__info_text">08.2019—01.03.2020</p>
+						<p class="country__info_text flag">Англия</p>
+						<p class="country__info_text">92 участника</p>
+					</div>
+					<div class="prediction__section">
+						<div class="section__item">
+							<p class="section__item_title">ТОП 10</p>
+							<p class="section__item_title">Кубок Лиги</p>
+						</div>
+						<div class="section__item">
+							<p class="section__item_subtitle">Имя прогнозиста</p>
+							<p class="section__item_subtitle">Итого</p>
+						</div>
+						<div class="section__item">
+							<p class="section__item_text">Сергей0922</p>
+							<p class="section__item_text">23</p>
+						</div>
+						<div class="section__item">
+							<p class="section__item_text">Сергей0922</p>
+							<p class="section__item_text">13</p>
+						</div>
+						<div class="section__item">
+							<p class="section__item_text">Сергей0922</p>
+							<p class="section__item_text">13</p>
+						</div>
+						<div class="section__item">
+							<p class="section__item_text">Сергей0922</p>
+							<p class="section__item_text">13</p>
+						</div>
+						<div class="section__item">
+							<p class="section__item_text">Сергей0922</p>
+							<p class="section__item_text">13</p>
+						</div>
+						<div class="section__item">
+							<p class="section__item_text">Сергей0922</p>
+							<p class="section__item_text">13</p>
+						</div>
+						<div class="section__item">
+							<p class="section__item_text">Сергей0922</p>
+							<p class="section__item_text">13</p>
+						</div>	
+						<div class="section__item">
+							<p class="section__item_text">Сергей0922</p>
+							<p class="section__item_text">9</p>
+						</div>
+						<div class="section__item">
+							<p class="section__item_text">Сергей0922</p>
+							<p class="section__item_text">8</p>
+						</div>
+						<div class="section__item">
+							<p class="section__item_text">Сергей0922</p>
+							<p class="section__item_text">5</p>
+						</div>
+						<button class="section__btn">Статистика</button>
+					</div>
+					<div class="winner__section">
+						<p class="winner__section_title">Победитель последнего тура</p>
+						<div class="section__item border__block pb-3">
+							<p class="section__item_text">Сергей0922</p>
+							<p class="section__item_text">5</p>
+						</div>
+						<p class="winner__section_title">Лидер по точным угаданным счетам</p>
+						<div class="section__item">
+							<p class="section__item_text">Сергей0922</p>
+							<p class="section__item_text">5</p>
+						</div>
+						<div class="section__item">
+							<p class="section__item_text">Сергей0922</p>
+							<p class="section__item_text">5</p>
+						</div>
+						<div class="section__item border__block pb-3">
+							<p class="section__item_text">Сергей0922</p>
+							<p class="section__item_text">5</p>
+						</div>
+						<p class="winner__section_title">Рекорд по очкам в туре</p>
+						<div class="section__item">
+							<p class="section__item_text">Сергей0922</p>
+							<p class="section__item_text">5</p>
+						</div>
+					</div>
+					<div class="advertising_block mb-5">
+						<p>Реклама</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}
+
+{% block javascripts %}
+
+{% endblock %}

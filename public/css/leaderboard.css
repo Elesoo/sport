@@ -1,0 +1,47 @@
+.item__text {
+	width: 70%;
+}
+
+.user__info_about {
+	margin-bottom: 0;
+	padding-bottom: 0;
+	justify-content: normal;
+}
+
+.table__menu td {
+	color: #656565;
+	font-size: 14px;
+	padding-left: 0 !important;
+}
+
+.tournir__table td {
+	width: 16%;
+}
+
+.section__item_text:last-child {
+	font-size: 16px;
+}
+
+.tournir__table .two td:first-child {
+	font-weight: bold;
+}
+
+.leader__tur tr td:last-child {
+	color: #119C51;
+}
+
+.leader__tur tr td:first-child {
+	font-weight: bold;
+}
+
+.leader__tur .table__menu td:last-child {
+	color: #656565 !important;
+}
+
+.leader__subtitle {
+	font-weight: 500;
+	font-size: 18px;
+	line-height: 22px;
+	color: #119C51;
+	margin-bottom: 45px;
+}

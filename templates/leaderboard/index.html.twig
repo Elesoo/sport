@@ -1,0 +1,840 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block includes %}
+	<link rel="stylesheet" href="../css/tourchamp.css">
+	<link rel="stylesheet" href="/css/leaderboard.css">
+	<script>
+		window.onload = () => {	
+			let items = document.getElementsByClassName('tournir__menu_item');
+			lastElem = items[0];
+			for (let i = 0; i < items.length; i++) {
+				items[i].addEventListener('click', function() {
+					lastElem.classList.remove('active');
+					items[i].classList.add('active');
+
+					let tabOld = document.getElementById(lastElem.dataset.tab);
+					let tabNew = document.getElementById(items[i].dataset.tab);
+					tabOld.classList.remove('active');
+					tabNew.classList.add('active');
+					
+					lastElem = items[i];
+				});
+			}
+		};
+
+	</script>
+{% endblock %}
+
+{% block content%}
+	<div class="container-fluid tournir__cont" style="background: #F4F4F4;">
+		<div class="container">
+			{# <nav aria-label="breadcrumb">
+			  <ol class="breadcrumb" style="background-color: transparent;">
+			    <li class="breadcrumb-item"><a class="title-foot" href="/">Главная</a></li>
+			    <li class="breadcrumb-item"><a class="title-foot" href="/football">Футбол</a></li>
+			    <li class="breadcrumb-item active" aria-current="page">Чемпионат</li>
+			  </ol>
+			</nav> #}
+			<p class="icons__title pb-4">Статистика соревнований</p>
+			<div class="row">
+				<div class="col-xl-8 p-0 p-sm-3">
+					<div class="row pb-4">
+						<div class="col-sm-4 pr-sm-0">
+							<div class="tournir__menu_item active" data-tab="tournir">
+								<p class="item__text">Лидер по очкам</p>
+							</div>
+						</div>
+						<div class="col-sm-4 p-sm-0">
+							<div class="tournir__menu_item" data-tab="table">
+								<p class="item__text">Лидер по точно 
+								угаданным счетам</p>
+							</div>
+						</div>
+						<div class="col-sm-4 pl-sm-0">
+							<div class="tournir__menu_item" data-tab="result">
+								<p class="item__text">Победители туров</p>
+							</div>
+						</div>
+					</div>
+					<div class="row pb-4">
+						<div class="col-12 tab_items active" id="tournir">
+							<table class="tournir__table">
+								<tbody>
+									<tr class="table__menu">
+										<td></td>
+										<td>Имя прогнозиста</td>
+										<td>Прогнозы</td>
+										<td>Точный счет</td>
+										<td class="dis-no">Исходы и разница</td>
+										<td class="dis-no">Исходы</td>
+										<td class="dis-no">Очки</td>
+									</tr>
+									<tr class="two">
+										<td>245</td>
+										<td>
+											<div class="user__info_about ">
+												<img class="mr-1 " src="/img/main/table_noimg.png">
+												<p>Сергей0922</p>
+											</div>
+										</td>
+										<td>
+											<p class="section__item_text"><span class="point__prog">23</span>/<span class="title-foot">31</span></p>
+										</td>
+										<td>45</td>
+										<td class="dis-no">27</td>
+										<td class="dis-no">32</td>
+										<td class="dis-no">65</td>
+									</tr>
+										<tr>
+										<td class="lead__num">1</td>
+										<td>
+											<div class="user__info_about ">
+												<img class="mr-1 " src="/img/main/table_noimg.png">
+												<p>Сергей0922</p>
+											</div>
+										</td>
+										<td>
+											<p class="section__item_text"><span class="point__prog">23</span>/<span class="title-foot">31</span></p>
+										</td>
+										<td>45</td>
+										<td class="dis-no">27</td>
+										<td class="dis-no">32</td>
+										<td class="dis-no">65</td>
+									</tr>
+									<tr>
+										<td class="lead__num">2</td>
+										<td>
+											<div class="user__info_about ">
+												<img class="mr-1 " src="/img/main/table_noimg.png">
+												<p>Сергей0922</p>
+											</div>
+										</td>
+										<td>
+											<p class="section__item_text"><span class="point__prog">23</span>/<span class="title-foot">31</span></p>
+										</td>
+										<td>45</td>
+										<td class="dis-no">27</td>
+										<td class="dis-no">32</td>
+										<td class="dis-no">65</td>
+									</tr>
+									<tr>
+										<td class="lead__num">3</td>
+										<td>
+											<div class="user__info_about ">
+												<img class="mr-1 " src="/img/main/table_noimg.png">
+												<p>Сергей0922</p>
+											</div>
+										</td>
+										<td>
+											<p class="section__item_text"><span class="point__prog">23</span>/<span class="title-foot">31</span></p>
+										</td>
+										<td>45</td>
+										<td class="dis-no">27</td>
+										<td class="dis-no">32</td>
+										<td class="dis-no">65</td>
+									</tr>
+									<tr>
+										<td>4</td>
+										<td>
+											<div class="user__info_about ">
+												<img class="mr-1 " src="/img/main/table_noimg.png">
+												<p>Сергей0922</p>
+											</div>
+										</td>
+										<td>
+											<p class="section__item_text"><span class="point__prog">23</span>/<span class="title-foot">31</span></p>
+										</td>
+										<td>45</td>
+										<td class="dis-no">27</td>
+										<td class="dis-no">32</td>
+										<td class="dis-no">65</td>
+									</tr>
+									<tr>
+										<td>4</td>
+										<td>
+											<div class="user__info_about ">
+												<img class="mr-1 " src="/img/main/table_noimg.png">
+												<p>Сергей0922</p>
+											</div>
+										</td>
+										<td>
+											<p class="section__item_text"><span class="point__prog">23</span>/<span class="title-foot">31</span></p>
+										</td>
+										<td>45</td>
+										<td class="dis-no">27</td>
+										<td class="dis-no">32</td>
+										<td class="dis-no">65</td>
+									</tr>
+									<tr>
+										<td>4</td>
+										<td>
+											<div class="user__info_about ">
+												<img class="mr-1 " src="/img/main/table_noimg.png">
+												<p>Сергей0922</p>
+											</div>
+										</td>
+										<td>
+											<p class="section__item_text"><span class="point__prog">23</span>/<span class="title-foot">31</span></p>
+										</td>
+										<td>45</td>
+										<td class="dis-no">27</td>
+										<td class="dis-no">32</td>
+										<td class="dis-no">65</td>
+									</tr>
+									<tr>
+										<td>4</td>
+										<td>
+											<div class="user__info_about ">
+												<img class="mr-1 " src="/img/main/table_noimg.png">
+												<p>Сергей0922</p>
+											</div>
+										</td>
+										<td>
+											<p class="section__item_text"><span class="point__prog">23</span>/<span class="title-foot">31</span></p>
+										</td>
+										<td>45</td>
+										<td class="dis-no">27</td>
+										<td class="dis-no">32</td>
+										<td class="dis-no">65</td>
+									</tr>
+									<tr>
+										<td>4</td>
+										<td>
+											<div class="user__info_about ">
+												<img class="mr-1 " src="/img/main/table_noimg.png">
+												<p>Сергей0922</p>
+											</div>
+										</td>
+										<td>
+											<p class="section__item_text"><span class="point__prog">23</span>/<span class="title-foot">31</span></p>
+										</td>
+										<td>45</td>
+										<td class="dis-no">27</td>
+										<td class="dis-no">32</td>
+										<td class="dis-no">65</td>
+									</tr>
+									<tr>
+										<td>4</td>
+										<td>
+											<div class="user__info_about ">
+												<img class="mr-1 " src="/img/main/table_noimg.png">
+												<p>Сергей0922</p>
+											</div>
+										</td>
+										<td>
+											<p class="section__item_text"><span class="point__prog">23</span>/<span class="title-foot">31</span></p>
+										</td>
+										<td>45</td>
+										<td class="dis-no">27</td>
+										<td class="dis-no">32</td>
+										<td class="dis-no">65</td>
+									</tr>
+									<tr>
+										<td>4</td>
+										<td>
+											<div class="user__info_about ">
+												<img class="mr-1 " src="/img/main/table_noimg.png">
+												<p>Сергей0922</p>
+											</div>
+										</td>
+										<td>
+											<p class="section__item_text"><span class="point__prog">23</span>/<span class="title-foot">31</span></p>
+										</td>
+										<td>45</td>
+										<td class="dis-no">27</td>
+										<td class="dis-no">32</td>
+										<td class="dis-no">65</td>
+									</tr>
+									<tr>
+										<td>4</td>
+										<td>
+											<div class="user__info_about ">
+												<img class="mr-1 " src="/img/main/table_noimg.png">
+												<p>Сергей0922</p>
+											</div>
+										</td>
+										<td>
+											<p class="section__item_text"><span class="point__prog">23</span>/<span class="title-foot">31</span></p>
+										</td>
+										<td>45</td>
+										<td class="dis-no">27</td>
+										<td class="dis-no">32</td>
+										<td class="dis-no">65</td>
+									</tr>
+									<tr>
+										<td>4</td>
+										<td>
+											<div class="user__info_about ">
+												<img class="mr-1 " src="/img/main/table_noimg.png">
+												<p>Сергей0922</p>
+											</div>
+										</td>
+										<td>
+											<p class="section__item_text"><span class="point__prog">23</span>/<span class="title-foot">31</span></p>
+										</td>
+										<td>45</td>
+										<td class="dis-no">27</td>
+										<td class="dis-no">32</td>
+										<td class="dis-no">65</td>
+									</tr>
+									<tr>
+										<td>4</td>
+										<td>
+											<div class="user__info_about ">
+												<img class="mr-1 " src="/img/main/table_noimg.png">
+												<p>Сергей0922</p>
+											</div>
+										</td>
+										<td>
+											<p class="section__item_text"><span class="point__prog">23</span>/<span class="title-foot">31</span></p>
+										</td>
+										<td>45</td>
+										<td class="dis-no">27</td>
+										<td class="dis-no">32</td>
+										<td class="dis-no">65</td>
+									</tr>
+									<tr>
+										<td>4</td>
+										<td>
+											<div class="user__info_about ">
+												<img class="mr-1 " src="/img/main/table_noimg.png">
+												<p>Сергей0922</p>
+											</div>
+										</td>
+										<td>
+											<p class="section__item_text"><span class="point__prog">23</span>/<span class="title-foot">31</span></p>
+										</td>
+										<td>45</td>
+										<td class="dis-no">27</td>
+										<td class="dis-no">32</td>
+										<td class="dis-no">65</td>
+									</tr>
+									<tr>
+										<td>4</td>
+										<td>
+											<div class="user__info_about ">
+												<img class="mr-1 " src="/img/main/table_noimg.png">
+												<p>Сергей0922</p>
+											</div>
+										</td>
+										<td>
+											<p class="section__item_text"><span class="point__prog">23</span>/<span class="title-foot">31</span></p>
+										</td>
+										<td>45</td>
+										<td class="dis-no">27</td>
+										<td class="dis-no">32</td>
+										<td class="dis-no">65</td>
+									</tr>
+									<tr>
+										<td>4</td>
+										<td>
+											<div class="user__info_about ">
+												<img class="mr-1 " src="/img/main/table_noimg.png">
+												<p>Сергей0922</p>
+											</div>
+										</td>
+										<td>
+											<p class="section__item_text"><span class="point__prog">23</span>/<span class="title-foot">31</span></p>
+										</td>
+										<td>45</td>
+										<td class="dis-no">27</td>
+										<td class="dis-no">32</td>
+										<td class="dis-no">65</td>
+									</tr>
+									<tr>
+										<td>18</td>
+										<td>
+											<div class="user__info_about ">
+												<img class="mr-1 " src="/img/main/table_noimg.png">
+												<p>Сергей0922</p>
+											</div>
+										</td>
+										<td>
+											<p class="section__item_text"><span class="point__prog">23</span>/<span class="title-foot">31</span></p>
+										</td>
+										<td>45</td>
+										<td class="dis-no">27</td>
+										<td class="dis-no">32</td>
+										<td class="dis-no">65</td>
+									</tr>				
+									<tr>
+										<td>19</td>
+										<td>
+											<div class="user__info_about ">
+												<img class="mr-1 " src="/img/main/table_noimg.png">
+												<p>Сергей0922</p>
+											</div>
+										</td>
+										<td>
+											<p class="section__item_text"><span class="point__prog">23</span>/<span class="title-foot">31</span></p>
+										</td>
+										<td>45</td>
+										<td class="dis-no">27</td>
+										<td class="dis-no">32</td>
+										<td class="dis-no">65</td>
+									</tr>
+									<tr>
+										<td>20</td>
+										<td>
+											<div class="user__info_about ">
+												<img class="mr-1 " src="/img/main/table_noimg.png">
+												<p>Сергей0922</p>
+											</div>
+										</td>
+										<td>
+											<p class="section__item_text"><span class="point__prog">23</span>/<span class="title-foot">31</span></p>
+										</td>
+										<td>45</td>
+										<td class="dis-no">27</td>
+										<td class="dis-no">32</td>
+										<td class="dis-no">65</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="col-12 tab_items" id="table">
+							
+						</div>	
+						<div class="col-12 tab_items" id="result">
+							<p class="leader__subtitle">1-й тур</p>
+							<table class="tournir__table leader__tur">
+								<tbody>
+									<tr class="table__menu">
+										<td></td>
+										<td>Имя прогнозиста</td>
+										<td>Итого</td>
+										<td>Выигрыш</td>
+									</tr>
+									<tr>
+										<td class="lead__num">1</td>
+										<td>
+											<div class="user__info_about ">
+												<img class="mr-1 " src="/img/main/table_noimg.png">
+												<p>Сергей0922</p>
+											</div>
+										</td>
+										<td>
+											27
+										</td>
+										<td>+20 ₽</td>
+									</tr>
+									<tr>
+										<td class="lead__num">2</td>
+										<td>
+											<div class="user__info_about ">
+												<img class="mr-1 " src="/img/main/table_noimg.png">
+												<p>Сергей0922</p>
+											</div>
+										</td>
+										<td>
+											27
+										</td>
+										<td>+20 ₽</td>
+									</tr>
+									<tr>
+										<td class="lead__num">3</td>
+										<td>
+											<div class="user__info_about ">
+												<img class="mr-1 " src="/img/main/table_noimg.png">
+												<p>Сергей0922</p>
+											</div>
+										</td>
+										<td>
+											27
+										</td>
+										<td>+20 ₽</td>
+									</tr>
+									<tr>
+										<td>4</td>
+										<td>
+											<div class="user__info_about ">
+												<img class="mr-1 " src="/img/main/table_noimg.png">
+												<p>Сергей0922</p>
+											</div>
+										</td>
+										<td>
+											27
+										</td>
+										<td>+20 ₽</td>
+									</tr>
+									<tr>
+										<td>5</td>
+										<td>
+											<div class="user__info_about ">
+												<img class="mr-1 " src="/img/main/table_noimg.png">
+												<p>Сергей0922</p>
+											</div>
+										</td>
+										<td>
+											27
+										</td>
+										<td>+20 ₽</td>
+									</tr>
+									<tr>
+										<td>6</td>
+										<td>
+											<div class="user__info_about ">
+												<img class="mr-1 " src="/img/main/table_noimg.png">
+												<p>Сергей0922</p>
+											</div>
+										</td>
+										<td>
+											27
+										</td>
+										<td>+20 ₽</td>
+									</tr>
+									<tr>
+										<td>7</td>
+										<td>
+											<div class="user__info_about ">
+												<img class="mr-1 " src="/img/main/table_noimg.png">
+												<p>Сергей0922</p>
+											</div>
+										</td>
+										<td>
+											27
+										</td>
+										<td>+20 ₽</td>
+									</tr>
+									<tr>
+										<td>8</td>
+										<td>
+											<div class="user__info_about ">
+												<img class="mr-1 " src="/img/main/table_noimg.png">
+												<p>Сергей0922</p>
+											</div>
+										</td>
+										<td>
+											27
+										</td>
+										<td>+20 ₽</td>
+									</tr>
+									<tr>
+										<td>9</td>
+										<td>
+											<div class="user__info_about ">
+												<img class="mr-1 " src="/img/main/table_noimg.png">
+												<p>Сергей0922</p>
+											</div>
+										</td>
+										<td>
+											27
+										</td>
+										<td>+20 ₽</td>
+									</tr>
+									<tr>
+										<td>10</td>
+										<td>
+											<div class="user__info_about ">
+												<img class="mr-1 " src="/img/main/table_noimg.png">
+												<p>Сергей0922</p>
+											</div>
+										</td>
+										<td>
+											27
+										</td>
+										<td>+20 ₽</td>
+									</tr>
+								</tbody>
+							</table>
+							<p class="leader__subtitle mt-5">2-й тур</p>
+							<table class="tournir__table leader__tur">
+								<tbody>
+									<tr class="table__menu">
+										<td></td>
+										<td>Имя прогнозиста</td>
+										<td>Итого</td>
+										<td>Выигрыш</td>
+									</tr>
+									<tr>
+										<td class="lead__num">1</td>
+										<td>
+											<div class="user__info_about ">
+												<img class="mr-1 " src="/img/main/table_noimg.png">
+												<p>Сергей0922</p>
+											</div>
+										</td>
+										<td>
+											27
+										</td>
+										<td>+20 ₽</td>
+									</tr>
+									<tr>
+										<td class="lead__num">2</td>
+										<td>
+											<div class="user__info_about ">
+												<img class="mr-1 " src="/img/main/table_noimg.png">
+												<p>Сергей0922</p>
+											</div>
+										</td>
+										<td>
+											27
+										</td>
+										<td>+20 ₽</td>
+									</tr>
+									<tr>
+										<td class="lead__num">3</td>
+										<td>
+											<div class="user__info_about ">
+												<img class="mr-1 " src="/img/main/table_noimg.png">
+												<p>Сергей0922</p>
+											</div>
+										</td>
+										<td>
+											27
+										</td>
+										<td>+20 ₽</td>
+									</tr>
+									<tr>
+										<td>4</td>
+										<td>
+											<div class="user__info_about ">
+												<img class="mr-1 " src="/img/main/table_noimg.png">
+												<p>Сергей0922</p>
+											</div>
+										</td>
+										<td>
+											27
+										</td>
+										<td>+20 ₽</td>
+									</tr>
+									<tr>
+										<td>5</td>
+										<td>
+											<div class="user__info_about ">
+												<img class="mr-1 " src="/img/main/table_noimg.png">
+												<p>Сергей0922</p>
+											</div>
+										</td>
+										<td>
+											27
+										</td>
+										<td>+20 ₽</td>
+									</tr>
+									<tr>
+										<td>6</td>
+										<td>
+											<div class="user__info_about ">
+												<img class="mr-1 " src="/img/main/table_noimg.png">
+												<p>Сергей0922</p>
+											</div>
+										</td>
+										<td>
+											27
+										</td>
+										<td>+20 ₽</td>
+									</tr>
+									<tr>
+										<td>7</td>
+										<td>
+											<div class="user__info_about ">
+												<img class="mr-1 " src="/img/main/table_noimg.png">
+												<p>Сергей0922</p>
+											</div>
+										</td>
+										<td>
+											27
+										</td>
+										<td>+20 ₽</td>
+									</tr>
+									<tr>
+										<td>8</td>
+										<td>
+											<div class="user__info_about ">
+												<img class="mr-1 " src="/img/main/table_noimg.png">
+												<p>Сергей0922</p>
+											</div>
+										</td>
+										<td>
+											27
+										</td>
+										<td>+20 ₽</td>
+									</tr>
+									<tr>
+										<td>9</td>
+										<td>
+											<div class="user__info_about ">
+												<img class="mr-1 " src="/img/main/table_noimg.png">
+												<p>Сергей0922</p>
+											</div>
+										</td>
+										<td>
+											27
+										</td>
+										<td>+20 ₽</td>
+									</tr>
+									<tr>
+										<td>10</td>
+										<td>
+											<div class="user__info_about ">
+												<img class="mr-1 " src="/img/main/table_noimg.png">
+												<p>Сергей0922</p>
+											</div>
+										</td>
+										<td>
+											27
+										</td>
+										<td>+20 ₽</td>
+									</tr>
+								</tbody>
+							</table>
+							<p class="leader__subtitle mt-5">3-й тур</p>
+							<table class="tournir__table leader__tur">
+								<tbody>
+									<tr class="table__menu">
+										<td></td>
+										<td>Имя прогнозиста</td>
+										<td>Итого</td>
+										<td>Выигрыш</td>
+									</tr>
+									<tr>
+										<td class="lead__num">1</td>
+										<td>
+											<div class="user__info_about ">
+												<img class="mr-1 " src="/img/main/table_noimg.png">
+												<p>Сергей0922</p>
+											</div>
+										</td>
+										<td>
+											27
+										</td>
+										<td>+20 ₽</td>
+									</tr>
+									<tr>
+										<td class="lead__num">2</td>
+										<td>
+											<div class="user__info_about ">
+												<img class="mr-1 " src="/img/main/table_noimg.png">
+												<p>Сергей0922</p>
+											</div>
+										</td>
+										<td>
+											27
+										</td>
+										<td>+20 ₽</td>
+									</tr>
+									<tr>
+										<td class="lead__num">3</td>
+										<td>
+											<div class="user__info_about ">
+												<img class="mr-1 " src="/img/main/table_noimg.png">
+												<p>Сергей0922</p>
+											</div>
+										</td>
+										<td>
+											27
+										</td>
+										<td>+20 ₽</td>
+									</tr>
+									<tr>
+										<td>4</td>
+										<td>
+											<div class="user__info_about ">
+												<img class="mr-1 " src="/img/main/table_noimg.png">
+												<p>Сергей0922</p>
+											</div>
+										</td>
+										<td>
+											27
+										</td>
+										<td>+20 ₽</td>
+									</tr>
+									<tr>
+										<td>5</td>
+										<td>
+											<div class="user__info_about ">
+												<img class="mr-1 " src="/img/main/table_noimg.png">
+												<p>Сергей0922</p>
+											</div>
+										</td>
+										<td>
+											27
+										</td>
+										<td>+20 ₽</td>
+									</tr>
+									<tr>
+										<td>6</td>
+										<td>
+											<div class="user__info_about ">
+												<img class="mr-1 " src="/img/main/table_noimg.png">
+												<p>Сергей0922</p>
+											</div>
+										</td>
+										<td>
+											27
+										</td>
+										<td>+20 ₽</td>
+									</tr>
+									<tr>
+										<td>7</td>
+										<td>
+											<div class="user__info_about ">
+												<img class="mr-1 " src="/img/main/table_noimg.png">
+												<p>Сергей0922</p>
+											</div>
+										</td>
+										<td>
+											27
+										</td>
+										<td>+20 ₽</td>
+									</tr>
+									<tr>
+										<td>8</td>
+										<td>
+											<div class="user__info_about ">
+												<img class="mr-1 " src="/img/main/table_noimg.png">
+												<p>Сергей0922</p>
+											</div>
+										</td>
+										<td>
+											27
+										</td>
+										<td>+20 ₽</td>
+									</tr>
+									<tr>
+										<td>9</td>
+										<td>
+											<div class="user__info_about ">
+												<img class="mr-1 " src="/img/main/table_noimg.png">
+												<p>Сергей0922</p>
+											</div>
+										</td>
+										<td>
+											27
+										</td>
+										<td>+20 ₽</td>
+									</tr>
+									<tr>
+										<td>10</td>
+										<td>
+											<div class="user__info_about ">
+												<img class="mr-1 " src="/img/main/table_noimg.png">
+												<p>Сергей0922</p>
+											</div>
+										</td>
+										<td>
+											27
+										</td>
+										<td>+20 ₽</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>	
+					</div>
+				</div>
+				<div class="col-xl-4">
+					<div class="advertising_block">
+						<p>Реклама</p>
+					</div>
+					<div class="advertising_block">
+						<p>Реклама</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
+{% block javascripts %}{% endblock %}

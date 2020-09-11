@@ -1,0 +1,505 @@
+{% extends 'base.html.twig' %}
+{% block includes %}
+
+	<link rel="stylesheet" href="/css/user_profile.css">
+	<link rel="stylesheet" href="/css/main.css">
+	<link rel="stylesheet" href="../css/tourchamp.css">
+	<link rel="stylesheet" href="../css/football.css">
+
+	<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+
+	<script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+
+	<script src="/js/profile.js"></script>
+	<script>
+		$(document).ready(function(){
+			if($('.swiper-wrapper')[0].childElementCount > 2){
+
+				$('.swiper-container').append('<div class="swiper-button-prev"></div><div class="swiper-button-next"></div>');
+				
+				var mySwiper = new Swiper('.swiper-container', {
+				  // Optional parameters
+				  direction: 'horizontal',
+
+				  // Navigation arrows
+				  navigation: {
+				    nextEl: '.swiper-button-next',
+				    prevEl: '.swiper-button-prev'
+				  },
+				  breakpoints: {
+				    // when window width is >= 320px
+				    0: {
+				      slidesPerView: 1,
+				      spaceBetween: 20
+				    },
+				    // when window width is >= 480px
+				    540: {
+				      slidesPerView: 3,
+				      spaceBetween: 30
+				    },
+				    // when window width is >= 640px
+				    960: {
+				      slidesPerView: 4,
+				      spaceBetween: 40
+				    }
+				  }
+				});
+			} else {
+				var mySwiper = new Swiper('.swiper-container',{
+					direction: 'horizontal',
+					slidesPerView: 2,
+					spaceBetween: 10,
+					resistance: false
+				});
+			}
+		});
+	</script>
+
+	<style type="text/css">
+		.swiper-container {
+		    width: 100%;
+		}
+
+		.swiper-button-next, .swiper-button-prev{
+			color: #119C51;
+		}
+	</style>
+
+{% endblock %}
+
+{% block content %}
+
+	<div class="container-fluid tournir__cont rooms " style="background: #F4F4F4;">
+		<div class="container pt-5">
+			<div class="row">
+				<div class="col-xl-8">
+					<div class="row pb-4 prof">
+						<div class="col-md-3 pr-md-0">
+							<div class="tournir__menu_item tournir__menu_item_head active" data-tab="profile">
+								<p class="item__text">Профиль</p>
+							</div>
+						</div>
+						<div class="col-md-3 p-md-0">
+							<div class="tournir__menu_item tournir__menu_item_head" onclick="window.location='/rooms'" data-tab="apartment">
+								<p class="item__text">Комнаты</p>
+							</div>
+						</div>
+						<div class="col-md-3 p-md-0">
+							<div class="tournir__menu_item tournir__menu_item_head" data-tab="take_money">
+								<p class="item__text">Вывод средств</p>
+							</div>
+						</div>
+						<div class="col-md-3 pl-md-0">
+							<div class="tournir__menu_item tournir__menu_item_head" data-tab="settings">
+								<p class="item__text">Настройки</p>
+							</div>
+						</div>
+					</div>
+					<div class="row pb-4">
+						<div class="col-12">
+							<div class="profile tab_items active" id="profile">
+								<div class="profile__card">
+									<div class="profile__card_section avatar_upload" onclick="load_avatar.click()">
+										<img id="user_img" class="user_img_class" src="" alt="">
+										<input class="sr-only" type="file" id="load_avatar" name="avatar" accept="image/*">
+									</div>
+									<div class="profile__card_section">
+										<h3 class="profile__name"></h3>
+										<p class="reg__date"><span>Дата регистрации</span>12 мая 2020 в 13:31</p>
+									</div>
+									<div class="profile__card_section">
+										<div class="card_section__about">
+											<p class="profile__cost" id="balance_now"></p>
+											<p class="profile__cost_status">Текущий баланс</p>
+										</div>
+										<div class="card_section__about">
+											<p class="profile__cost">5</p>
+											<p class="profile__cost_status">Сделано прогнозов</p>
+										</div>
+									</div>
+								</div>
+								<div class="achive">
+									<div class="achive__head">
+										<p class="icons__title">Достижения</p>
+										<div class="modal__items">
+											<p class="modal__items_text pt-0">Победитель туров
+											</p>
+											<button class="modal__items_btn" data-toggle="modal" data-target="#exampleModal">5</button>
+										</div>
+									</div>
+									<div class="achive__body">
+										<div class="swiper-container">
+											<div class="swiper-wrapper">
+												<div class="achive__body_item swiper-slide">
+													<img src="/img/profile/1.png" alt="">
+													<p class="achive__body_item_text">
+														Суперкубок УЕФА
+													</p>
+												</div>
+												<div class="achive__body_item swiper-slide">
+													<img src="/img/profile/1.png" alt="">
+													<p class="achive__body_item_text">
+														Суперкубок УЕФА
+													</p>
+												</div>
+												<div class="achive__body_item swiper-slide">
+													<img src="/img/profile/1.png" alt="">
+													<p class="achive__body_item_text">
+														Суперкубок УЕФА
+													</p>
+												</div>
+												<div class="achive__body_item swiper-slide">
+													<img src="/img/profile/1.png" alt="">
+													<p class="achive__body_item_text">
+														Суперкубок УЕФА
+													</p>
+												</div>
+												<div class="achive__body_item swiper-slide">
+													<img src="/img/profile/1.png" alt="">
+													<p class="achive__body_item_text">
+														Суперкубок УЕФА
+													</p>
+												</div>
+												<div class="achive__body_item swiper-slide">
+													<img src="/img/profile/1.png" alt="">
+													<p class="achive__body_item_text">
+														Суперкубок УЕФА
+													</p>
+												</div>
+												<div class="achive__body_item swiper-slide">
+													<img src="/img/profile/2.png" alt="">
+													<p class="achive__body_item_text">
+														Лига Европы
+													</p>
+												</div>
+											</div>
+											
+										</div>
+									</div>
+								</div>
+								<div class="stats">
+									<p class="icons__title mb-4">Статистика</p>
+									<div class="row">
+										<div class="col-md-4 pr-md-0 mb-2">
+											<div class="stats__item">
+												<h3 class="stats__item_title title-foot foot_img">Футбол</h3>
+												<table>
+													<tbody>
+														<tr>
+															<td>Прогнозы</td>
+															<td><span style="color: red;">45</span><span style="color: green;">/65</span></td>
+														</tr>
+														<tr>
+															<td>Точный счет</td>
+															<td>34</td>
+														</tr>
+														<tr>
+															<td>Исходы и разница</td>
+															<td>27</td>
+														</tr>
+														<tr>
+															<td>Исходы</td>
+															<td>9</td>
+														</tr>
+														<tr>
+															<td>Очки</td>
+															<td>78</td>
+														</tr>
+													</tbody>
+												</table>	
+											</div>
+										</div>
+										<div class="col-md-4 mb-2">
+											<div class="stats__item">
+												<h3 class="stats__item_title title-hock hock_img">Хоккей</h3>
+												<table>
+													<tbody>
+														<tr>
+															<td>Прогнозы</td>
+															<td><span style="color: red;">45</span><span style="color: green;">/65</span></td>
+														</tr>
+														<tr>
+															<td>Точный счет</td>
+															<td>34</td>
+														</tr>
+														<tr>
+															<td>Исходы и разница</td>
+															<td>27</td>
+														</tr>
+														<tr>
+															<td>Исходы</td>
+															<td>9</td>
+														</tr>
+														<tr>
+															<td>Очки</td>
+															<td>78</td>
+														</tr>
+													</tbody>
+												</table>	
+											</div>
+										</div>
+										<div class="col-md-4 pl-md-0">
+											<div class="stats__item">
+												<h3 class="stats__item_title title-basket bask_img">Баскетбол</h3>
+												<table>
+													<tbody>
+														<tr>
+															<td>Прогнозы</td>
+															<td><span style="color: red;">45</span><span style="color: green;">/65</span></td>
+														</tr>
+														<tr>
+															<td>Точный счет</td>
+															<td>34</td>
+														</tr>
+														<tr>
+															<td>Исходы и разница</td>
+															<td>27</td>
+														</tr>
+														<tr>
+															<td>Исходы</td>
+															<td>9</td>
+														</tr>
+														<tr>
+															<td>Очки</td>
+															<td>78</td>
+														</tr>
+													</tbody>
+												</table>	
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="forcast">
+									<p class="icons__title mb-3">Прогнозы</p>
+									<div class="row mb-4 m-0">
+										<div class="col-md-4 p-0">
+											<div class="tournir__menu_item tournir__menu_items active" data-tab="foott">
+												<p class="item__text">Футбол</p>
+											</div>
+										</div>
+										<div class="col-md-4 p-0">
+											<div class="tournir__menu_item tournir__menu_items" data-tab="hocc">
+												<p class="item__text">Хоккей</p>
+											</div>
+										</div>
+										<div class="col-md-4 p-0">
+											<div class="tournir__menu_item tournir__menu_items" data-tab="baskk">
+												<p class="item__text">Баскетбол</p>
+											</div>
+										</div>	
+									</div>
+									<div class="forcast__cont tab_items active" id="foott">
+										<div class="row m-0">
+											<div class="col-md-6 p-0 p-md-2">
+												<div class="tournir__card">
+													<div class="toutrnir__card_subtitle text-truncate">
+														<p class="tournir__card_text">Лига чемпионов</p>
+														<img src="" alt="" class="img-fluid">
+													</div>
+													<div class="tournir__card_blocktext">
+														<p class="blocktext__date">26 октября</p>
+														<!-- <p class="blocktext__date">-</p> -->
+														<!-- <p class="blocktext__time">12:45</p> -->
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6 p-0 p-md-2">
+												<div class="tournir__card">
+													<div class="toutrnir__card_subtitle text-truncate">
+														<p class="tournir__card_text">Лига чемпионов</p>
+														<img src="" alt="" class="img-fluid">
+													</div>
+													<div class="tournir__card_blocktext">
+														<p class="blocktext__date">26 октября</p>
+														<!-- <p class="blocktext__date">-</p> -->
+														<!-- <p class="blocktext__time">12:45</p> -->
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="tournir__block_item">
+											<div class="tournir__item_date">
+												<p class="tournir__date_text">23.04.2020</p>
+											</div>
+											<div class="tournir__item_comand">
+												<div class="tournir__item_team">
+													<p class="comand__name text-truncate">Челси</p>
+													<img src="/img/tournir_champ/symb.png" alt="" class="ml-2">
+													<div class="tournir__item_count lead__num mr-2 ml-2">-</div>
+													<div class="tournir__item_count lead__num">-</div>
+													<img src="/img/tournir_champ/symb.png" alt="" class="ml-2 mr-2">
+													<p class="comand__name text-truncate">Ман Сити</p>
+												</div>
+												<div class="block_prog">
+													<input class="input_prog" type="text" value="5" name=""/ readonly>
+													<input class="input_prog" type="text" value="3" name=""/ readonly>
+												</div>
+												<div class="tournir__item_point"> +5
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="forcast__cont tab_items" id="hocc"></div>
+									<div class="forcast__cont tab_items" id="baskk"></div>
+								</div>	
+							</div>
+							
+						</div>
+						<div class="col-12">
+							<div class="money tab_items" id="take_money">
+								<div class="row">
+									<div class="col-md-6 pr-md-0 mb-2">
+										<div class="balance__item">
+											<p class="balance__item_status">
+												Текущий баланс
+											</p>
+											<p class="balance__item_num orn" id="out_money_now">
+											</p>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="balance__item ">
+											<p class="balance__item_status">
+												Выведено средств
+											</p>
+											<p class="balance__item_num blu" id="out_money_success">
+											</p>
+										</div>
+									</div>
+								</div>
+								<div class="form__money">
+									<p class="form__money_text">Для вывода средст необходимо указать сумму вывода. Средства будут отправлены                  на карту “Сбербанка”, прикрепленную к номеру,  который Вы указали при регистрации.</p>
+									<input type="number" class="form__money_input" placeholder="Сумма вывода, руб.">
+									<div class="form__money_label">
+										<input type="checkbox" id="check">
+										<label for="check" class="form__money_lab">Я согласен с условиями <a href="">вывода средства 
+										и обработку личных данных.
+										</a></label>
+									</div>
+									<button class="form__money_btn" onclick="take_money()">Вывести</button>
+								</div>
+								<p class="icons__title">История выплат</p>
+								<div class="money__table">
+									<table>
+										<tbody id="money_status">
+											<tr>
+												<th>#</th>
+												<th>
+													Дата и время
+												</th>
+												<th>
+													Сумма вывода
+												</th>
+												<th>
+													Статус операции
+												</th>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+						<div class="col-12">
+							<div class="tab_items" id="settings">
+								<div class="settings">
+									<h4 class="settings__title">Настройки профиля</h4>
+									<div class="settings__edit_block">
+										<input type="text" placeholder="Введите имя" id="settings_name">
+										<button class="settings__edit_btn">
+											<img src="/img/rooms/edit 2.png" alt="" class="settings__edit">
+										</button>
+									</div>
+									<div class="settings__edit_block">
+										<input type="text" placeholder="Введите фамилию" id="settings_surname">
+										<button class="settings__edit_btn">
+											<img src="/img/rooms/edit 2.png" alt="" class="settings__edit">
+										</button>
+									</div>
+									<div class="settings__edit_block">
+										<input type="text" placeholder="Введите ник" id="settings_nickname">
+										<button class="settings__edit_btn">
+											<img src="/img/rooms/edit 2.png" alt="" class="settings__edit">
+										</button>
+									</div>
+									<button class="edit__passw" onclick="save_profile_settings()">Сохранить изменения</button>
+									<button class="edit__passw" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Изменить пароль</button>
+									<div class="edit__passw_block collapse" id="collapseExample">
+										<div class="settings__edit_block">
+											<input type="password" placeholder="Новый пароль">
+										</div>
+										<div class="settings__edit_block">
+											<input type="password" placeholder="Повторите пароль">
+										</div>
+										<button class="edit__passw">Сохранить пароль</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xl-4">
+					<input type="text" placeholder="База данных прогнозистов" class="find__user_inp">
+					<div class="advertising_block">
+						<p>Реклама</p>
+					</div>
+					<div class="advertising_block">
+						<p>Реклама</p>
+					</div>
+				</div>
+			</div>
+		</div>	
+	</div>
+
+	<!-- Modal -->
+	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title profile__modal_title" id="exampleModalLabel">Победитель туров</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body profile__modal">
+	        	<div class="profile__list">
+	        		<div class="profile__item">
+						<div class="profile__item_section">
+	        				<h6 class="profile__item_subtitle">Суперкубок УЕФА</h6>
+		        			<p class="profile__item_text">21-й тур</p>
+						</div>
+						<p class="profile__item_text">23 января 2020</p>
+	        		</div>
+	        		<div class="profile__item">
+						<div class="profile__item_section">
+	        				<h6 class="profile__item_subtitle">Лига Европы</h6>
+		        			<p class="profile__item_text">21-й тур</p>
+						</div>
+						<p class="profile__item_text">23 января 2020</p>
+	        		</div>
+	        		<div class="profile__item">
+						<div class="profile__item_section">
+	        				<h6 class="profile__item_subtitle">Чемпионат Европы</h6>
+		        			<p class="profile__item_text">21-й тур</p>
+						</div>
+						<p class="profile__item_text">23 января 2020</p>
+	        		</div>
+	        		<div class="profile__item">
+						<div class="profile__item_section">
+	        				<h6 class="profile__item_subtitle">Чемпионат мира</h6>
+		        			<p class="profile__item_text">21-й тур</p>
+						</div>
+						<p class="profile__item_text">23 января 2020</p>
+	        		</div>
+	        		<div class="profile__item">
+						<div class="profile__item_section">
+	        				<h6 class="profile__item_subtitle">Лучший игрок года</h6>
+		        			<p class="profile__item_text">21-й тур</p>
+						</div>
+						<p class="profile__item_text">23 января 2020</p>
+	        		</div>
+	        	</div>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+{% endblock %}

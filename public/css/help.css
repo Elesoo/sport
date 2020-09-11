@@ -1,0 +1,130 @@
+.onhover:hover{
+	transform: scale(1.05);
+}
+
+@media(max-width: 450px){
+	.onhover{
+		width: 100%;
+		text-align: center;
+		overflow: hidden;
+	}
+
+	.onhover > img{
+		display: block;
+	}
+}
+
+.mt-n15-5{
+	margin-top: -15.5rem!important;
+}
+
+@media (max-width: 1200px){
+	.mt-n15-5{
+		margin-top: 0 !important;
+	}
+}
+
+.title-foot{
+	color: #119C51 !important;
+}
+
+.title-hock{
+	color: #1779C0 !important;
+}
+
+.title-basket{
+	color: #FF5F23 !important;
+}
+
+.point__prog{
+	color: #BD0606 !important;
+}
+
+.border__around{
+	border-right: 0.3px solid rgba(0, 0, 0, 0.5);
+	border-left: 0.3px solid rgba(0, 0, 0, 0.5);
+}
+
+.border__bottom{
+	border-bottom: .3px solid rgba(0, 0, 0, 0.5);
+}
+
+.border_bottom_none{
+	border-bottom: none !important;
+}
+.blue {
+	background: #1779C0;
+	border: none;
+}
+
+.blue:before {
+	content: url('/img/match/hoc.png');
+	vertical-align: middle;
+	padding-right: 8px;
+}
+
+.blue-border{
+	border: 1px solid #1779C0;
+	background-color: transparent;
+	color: #000 !important;
+}
+
+.orange {
+	background: #FF5F23;
+	border: none;
+}
+
+.orange:before {
+	content: url('/img/match/bask.png');
+	padding-right: 10px;
+	display: inline-block;
+	vertical-align: middle;
+	line-height: 1;
+}
+
+.orange-border{
+	border: 1px solid #FF5F23;
+	background-color: transparent;
+	color: #000 !important;
+}
+
+.green{
+	background: #119C51;
+	border: none;
+}
+
+.green:before{
+	content: url('/img/match/foot.png');
+	padding-right: 10px;
+	display: inline-block;
+	vertical-align: middle;
+	line-height: 1;	
+}
+
+.green-border {
+	border: 1px solid #119C51;
+	background-color: transparent;
+	color: #000 !important;
+}
+
+.blue-background{
+	background-color: #1779C0 !important;
+}
+
+.green-background{
+	background-color: #119C51 !important;
+}
+
+.orange-background{
+	background-color: #FF5F23 !important;
+}
+
+.foot_img:before{
+	content: url('/img/main/foot_table.png');
+}
+.hock_img:before{
+	content: url('/img/main/hoc_table.png');
+}
+.bask_img:before{
+	content: url('/img/main/basket_table.png');
+}

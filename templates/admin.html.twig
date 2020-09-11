@@ -1,0 +1,82 @@
+{# Тут ебани основу #}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+  <title>Admin</title>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+  <link rel="stylesheet" type="text/css" href="/css/E-strap.css">
+  <link rel="stylesheet" type="text/css" href="/css/styleAdmin.css">
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+  
+  <script src="/js/E-strap.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function(){
+      var tmp = document.location.pathname;
+
+      switch(tmp){
+
+          case '/admin/access_levels' : 
+            $('a[href="/admin/access_levels"]').parent().addClass('active');
+            break;
+
+          case '/admin/users_ban' : 
+            $('a[href="/admin/users_ban"]').parent().addClass('active');
+            break;
+
+          case '/admin/claims' : 
+            $('a[href="/admin/claims"]').parent().addClass('active');
+            break;
+
+          default : 
+      }
+    });
+  </script>
+{% block includes %}{% endblock %}
+{% block javascript %}{% endblock %}
+</head>
+<body>
+  <div class="e_side_panel e_side_panel_js">
+      <div class="e_side_panel_nav">
+        <a class="e_side_panel_brand" href="">
+          <img class="e_side_panel_brand_img" src="/admin" alt="">Спортивный интерес
+        </a>
+        <h4 class="e_side_panel_title">Редактирование</h4>
+        <ul class="e_side_panel_list">
+          <li class="e_side_panel_item"><a class="e_side_panel_link" href="/admin/access_levels">Уровни доступа</a></li>
+          <li class="e_side_panel_item"><a class="e_side_panel_link" href="/admin/users_ban">Бан\Разбан пользователей</a></li>
+        </ul>
+        <h4 class="e_side_panel_title">Средства</h4>
+        <ul class="e_side_panel_list">
+          <li class="e_side_panel_item"><a class="e_side_panel_link" href="/admin/claims">Заявки</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="e_content">
+      <header class="e_header">
+        <button class="e_header_button u-mr-small">
+          <span class="e_header_button__bar_beta"></span>
+        </button>
+        <h2 class="e_header_title u-mr-auto">Уровни доступа</h2>
+      </header>
+      <main>
+
+{% block content %}{% endblock %}
+
+</main>
+    </div>
+
+</body>
+</html>
+
+{# тут наверн футер и закрывающий тег хтмл #}
